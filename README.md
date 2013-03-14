@@ -20,8 +20,12 @@ Available Methods:
 
 - Window Object
 - [Cross Document Messages](http://caniuse.com/#feat=x-doc-messaging)
+- [SharedWorkers](http://caniuse.com/#feat=sharedworkers)
 
-The first method is more widely supported but requires that the first window spawn the second so it has a reference to it.  This method may also require exposing the API used in the second window for actions.
+The first method is subject to varying scrutiny, but is the most compatible of the available options.  This method requires spawning the second window and assigning a reference variable to access it.  Then triggering events by calling them directly treating that reference as a window object.
 
-The second is supported in all browsers except IE (even IE10), which retains partial support only for iFrames.  If we go that route we can redirect IE users.
+Cross Document Messages are not fully supported by IE (event IE10), but work everywhere else.  Like the Window Object method this still requires that the second window be spawned by the first, and a reference variable is then used to send the communication.  However, communication becomes a game of catch and receive, instead of direct access, which secures the code and keeps the overall system cleaner.
 
+The third method is ideal, but only supported in Chrome, Safari, and Opera.  This limits compatibility, but greatly improves functionality.  It allows windows to communicate without being spawned from one or the other.  This mixed with the postMessage (Cross Document Messages) would be the ideal solution.
+
+I have performed extensive testing on the SharedWorker object and built a [library](http://cdelorme.com/SharedWorker/) of code we could adopt and modify for our purposes.
