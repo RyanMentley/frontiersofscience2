@@ -1,0 +1,27 @@
+/* CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 960px;
+	margin: 20px auto;
+}
+h1, p, input[type=button] {
+	margin-bottom: 15px;
+}
+.earth, .space {
+	float: left;
+	margin-right: 150px;
+	color: #fff;
+	padding: 8px;
+	border-radius: 8px;
+}
+.earth {
+	background: #0000ff;
+	border: 1px solid #000;
+}
+.space {
+	background: #000;
+	border: 1px solid #fff;
+}
