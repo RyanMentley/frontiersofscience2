@@ -1,5 +1,4 @@
-frontiersofscience2
-===================
+# frontiersofscience2
 
 Frontiers of Science II class project
 
@@ -14,18 +13,23 @@ Tools chosen thus far include Web (JavaScript, HTML, CSS) and potentially a Wiim
 
 ## Status
 
-Currently testing inter-window communication with JavaScript.
+Currently testing cross-window communication.  Next is HTML5 audio tags, and finally an image slide show system for smooth animations.
 
-Available Methods:
+**Demo Code:**
 
-- Window Object
+- [Linked Direct](http://frontiers.cdelorme.com/cbd/1/)
+- [Linked Indirect](http://frontiers.cdelorme.com/cbd/2/)
+- [Unlinked Indirect](http://frontiers.cdelorme.com/cbd/3/)
+
+The first two are relatively simple and show direct access with the window object, and postMessage event based handling.
+
+The third uses the SharedWorker component and is much more complex
+
+The SharedWorker example requires quite a bit more context to be useful, so while it does in fact require more code to build, the demonstration code is almost the entire implementation, not a minimal example like the first two.
+
+
+**References:**
+
 - [Cross Document Messages](http://caniuse.com/#feat=x-doc-messaging)
 - [SharedWorkers](http://caniuse.com/#feat=sharedworkers)
-
-The first method is subject to varying scrutiny, but is the most compatible of the available options.  This method requires spawning the second window and assigning a reference variable to access it.  Then triggering events by calling them directly treating that reference as a window object.
-
-Cross Document Messages are not fully supported by IE (event IE10), but work everywhere else.  Like the Window Object method this still requires that the second window be spawned by the first, and a reference variable is then used to send the communication.  However, communication becomes a game of catch and receive, instead of direct access, which secures the code and keeps the overall system cleaner.
-
-The third method is ideal, but only supported in Chrome, Safari, and Opera.  This limits compatibility, but greatly improves functionality.  It allows windows to communicate without being spawned from one or the other.  This mixed with the postMessage (Cross Document Messages) would be the ideal solution.
-
-I have performed extensive testing on the SharedWorker object and built a [library](http://cdelorme.com/SharedWorker/) of code we could adopt and modify for our purposes.
+- [Complex SharedWorker Implementationn](http://cdelorme.com/SharedWorker/)
