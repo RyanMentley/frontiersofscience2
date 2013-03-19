@@ -41,9 +41,9 @@ When we separate processing into two separated windows we would need a way of ha
 
 Three methods for this exist, they include:
 
-- Linked Direct
-- Linked Indirect
-- Unlinked Indirect
+- [Linked Direct](http://frontiers.cdelorme.com/cbd/1/)
+- [Linked Indirect](http://frontiers.cdelorme.com/cbd/2/)
+- [Unlinked Indirect](http://frontiers.cdelorme.com/cbd/3/)
 
 _Linked Direct_ is labeled as such since we create a new window object with a reference (hence the link), and we directly manipulate it by calling functions attached to that window object (by the scripts that load).  This means the code must be out in the open, not inside a closure, which automatically creates messier code.  All references must be established from the initial control-end, which places a higher level of dependencies on our main javascript code.
 
