@@ -29,8 +29,8 @@ For mobile we may wish to use a single window, but swap which component is being
 **Current Project Research**
 
 - Cross-Window Communication
-- Audio Playback in Browser
 - Image based animation
+- Audio Playback in Browser
 
 
 ---
@@ -51,6 +51,17 @@ _Linked Indirect_ still requires the same reference variable, but uses postMessa
 
 _Unlinked Indirect_ is ideal but involves a substantial amount of additional code and is not supported on mobile, limiting us to Chrome, Opera, and FireFox.  Benefits are decoupled code, automatic handling of new or closed windows without breaking links, making it possible to fall-back to a single window without reloading or excessive amounts of additional code.  It would also allow us to create a single primary javascript file instead of several, improving overall organization, and separating the cross-window communication into its own thing.
 
+---
+
+**Image Based Animation**
+
+May use a [jQuery Slideshow plugin](https://bitbucket.org/CDeLorme/jquery-slideshow-plugin) as the basis for this engine.  Depends on how far in we get versus how much time we have remaining.
+
+Math needs to be done based on mouse positions and some requirements need to be defined.  We should also have a streamlined set of images to place on a poster to indicate acceptable patterns for users visiting our exhibit.
+
+
+
+
 
 ---
 
@@ -59,15 +70,6 @@ _Unlinked Indirect_ is ideal but involves a substantial amount of additional cod
 We are considering HTML5 Audio Tags, as they are widely supported and would likely be functional.
 
 Concerns of pre-loading and bandwidth overhead limitations need to be investigated.
-
-
----
-
-**Image Based Animation**
-
-May use a [jQuery Slideshow plugin]() as the basis for this engine.  Depends on how far in we get versus how much time we have remaining.
-
-Math needs to be done based on mouse positions and
 
 
 ---
