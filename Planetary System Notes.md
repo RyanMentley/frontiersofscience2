@@ -61,6 +61,8 @@ Math needs to be done based on mouse positions and some requirements need to be 
 
 [Demonstration of the modified jQuery Slideshow integration](http://frontiers.cdelorme.com/itd/) for the project is now available.  Demonstration uses a set of 9 basic images swapped to create a smooth animation effect.
 
+Demo has been tested on OS X laptop with Core i7 processor, and an iPhone 5, and worked at an acceptable rate.  Tests on lesser machines may be required to ensure functionality is not limited to newer systems.  Also different transition speeds may be tested.
+
 Additional modifications will need to be added to allow storage of multiple sets of preloaded images, and dynamic switching between each.  Methods like addSlideshow would replace the current constructor process.  Methods like slideshow('name') could be used to switch the targeted slideshow group and reset the current position in the array of images.
 
 
