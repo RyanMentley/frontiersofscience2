@@ -59,7 +59,7 @@ May use a [jQuery Slideshow plugin](https://bitbucket.org/CDeLorme/jquery-slides
 
 Math needs to be done based on mouse positions and some requirements need to be defined.  We should also have a streamlined set of images to place on a poster to indicate acceptable patterns for users visiting our exhibit.
 
-[Demonstration of the modified jQuery Slideshow integration]() for the project is now available.  Demonstration uses a set of 9 basic images swapped to create a smooth animation effect.
+[Demonstration of the modified jQuery Slideshow integration](http://frontiers.cdelorme.com/itd/) for the project is now available.  Demonstration uses a set of 9 basic images swapped to create a smooth animation effect.
 
 Additional modifications will need to be added to allow storage of multiple sets of preloaded images, and dynamic switching between each.  Methods like addSlideshow would replace the current constructor process.  Methods like slideshow('name') could be used to switch the targeted slideshow group and reset the current position in the array of images.
 
