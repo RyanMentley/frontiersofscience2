@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+
+	<title>SlideShow</title>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src='jquery_slideshow.js' type='text/javascript'></script>
+
+	<style type='text/css'>
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #000;
+			height: 100%;
+		}
+
+		img {
+			display: block;
+			height: 100%;
+			width: auto;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.action {
+			position: absolute;
+			width: 200px;
+			left: 50%;
+			margin-left: -100px;
+			margin-top: -50px;
+			border-radius: 8px;
+			padding: 8px;
+			color: #0f0;
+			background: #fff;
+		}
+
+		.display {
+			position: absolute;
+			width: 600px;
+			left: 50%;
+			top: 5px;
+			margin-left: -300px;
+			border-radius: 8px;
+			padding: 8px;
+			color: #00f;
+			background: #fff;
+			z-index: 10;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<img />
+	<script type='text/javascript'>
+
+		$(document).on("ready", function() {
+			$("img").first().ss({
+				trans: false,
+				images: [
+					{
+						range: {
+							start: 1,
+							end: 9,
+							prefix: 'images/Sun',
+							type: '.png'
+						},
+						delay: 70
+					}
+				]
+			});
+		});
+
+	</script>
+
+</body>
+</html>
