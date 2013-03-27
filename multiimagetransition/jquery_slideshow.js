@@ -107,7 +107,7 @@
 		});
 
 		// Mouse Controls
-		$(document).on("click", function() {
+		this.on("click", function() {
 			self.forward();
 		});
 		$(document).on("mousemove", function() {
