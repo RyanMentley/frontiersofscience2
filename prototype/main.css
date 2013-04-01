@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	background: #000;
+	color: #fff;
+	margin: 20px auto;
+}
+
+p {
+	margin-bottom: 10px;
+}
+
+img {
+	border: 1px solid #fff;
+	vertical-align: middle;
+}
+
+img.same {
+	width: 48%;
+	height: auto;
+}
+
+img.diff {
+	display: block;
+	height: 95%;
+	width: auto;
+	margin: 20px auto;
+}
