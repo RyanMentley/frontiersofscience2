@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+
+	<title>Frontiers Final Prototype</title>
+	<link rel='stylesheet' type='text/css' href='main.css' />
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src='jquery_animator.js' type='text/javascript'></script>
+
+</head>
+<body>
+
+	<div class='display'>
+		<canvas id='sun' class='same'></canvas>
+		<canvas id='earth' class='same'></canvas>
+	</div>
+
+	<canvas></canvas>
+	<script type='text/javascript'>
+
+		$(document).on("ready", function() {
+
+			// Prepare
+			var sun = $('#sun').slideShow({ trans: 0 });
+			var earth = $('#earth').slideShow({ trans: 0 });
+
+
+			// Events
+			function displaySunSpot() {
+
+			}
+			function displaySolarFlare() {
+
+			}
+			function displayAurora() {
+
+			}
+			function displayCoronalMassEjection() {
+
+			}
+
+
+			sun.on('click touchstart', function() {
+
+				// Test
+				console.log("Indeed");
+
+
+			});
+
+
+			// // Speed up sun temporarily & Change Earth Animation
+			// ns.sun.on('click touchstart', function() {
+
+			// 	// Increase Sun Speed
+			// 	ns.sun.start('fast sun');
+			// 	ns.sun.queueSlide('sun');
+
+			// 	// Animate Earth Aurora
+			// 	ns.earth.start('aurora');
+			// 	ns.earth.queueSlide('earth');
+
+			// });
+
+
+			// Separate Windows not yet re-implemented
+/*
+
+			// Separate the Earth
+			ns.earth.on('click', function() {
+
+				// Unbind Click Event
+				ns.earth.unbind('click');
+
+				// Open a new window
+				var nw = window.open('./earth.html');
+
+				// Remove & Replace earth
+				$(nw).on('load', function() {
+
+					// Convert to jQuery Reference
+					ns.nw = $(this);
+
+					// Reference for removal
+					var other = $(this.document.getElementsByTagName('img'));
+
+					// Try replacing
+					other.replaceWith(ns.earth.remove());
+
+					// Change reference value to new thing
+					ns.earth.removeClass('same');
+					ns.earth.addClass('diff');
+
+					// Change sun class to diff
+					ns.sun.removeClass('same');
+					ns.sun.addClass('diff');
+
+				});
+
+			});
+
+*/
+
+			// Gesture Logic
+			// Audio Logic
+
+
+			// Preloader Images
+			sun.addSlides({ name: 'sun', images: [
+					{
+						range: {
+							start: 1,
+							end: 9,
+							prefix: "images/sun/space000",
+							type: ".png"
+						},
+						delay: 400
+					},
+					{
+						range: {
+							start: 10,
+							end: 99,
+							prefix: "images/sun/space00",
+							type: ".png"
+						},
+						delay: 400
+					},
+					{
+						range: {
+							start: 100,
+							end: 360,
+							prefix: "images/sun/space0",
+							type: ".png"
+						},
+						delay: 400
+					}
+				]
+			});
+			earth.addSlides({ name: 'earth', images: [
+					{
+						range: {
+							start: 1,
+							end: 9,
+							prefix: "images/earth/earth180000",
+							type: ".png"
+						},
+						delay: 2000
+					},
+					{
+						range: {
+							start: 10,
+							end: 99,
+							prefix: "images/earth/earth18000",
+							type: ".png"
+						},
+						delay: 2000
+					},
+					{
+						range: {
+							start: 100,
+							end: 180,
+							prefix: "images/earth/earth1800",
+							type: ".png"
+						},
+						delay: 2000
+					}
+				]
+			});
+			sun.addSlides({
+				name: 'flare',
+				images: [
+					{
+						range: {
+							start: 3,
+							end: 9,
+							prefix: "images/flare/test000",
+							type: ".png"
+						},
+						delay: 90
+					},
+					{
+						range: {
+							start: 10,
+							end: 20,
+							prefix: "images/flare/test00",
+							type: ".png"
+						},
+						delay: 90
+					}
+				]
+			});
+
+			// Define CanvasFrames
+			earth.addCanvasFrame({
+				name: 'sized_earth',
+				slide: 'earth',
+				top: 0,
+				left: 0,
+				width: 640,
+				height: 480,
+				rotate: 38
+			});
+			sun.addCanvasFrame({
+				name: 'sized_sun',
+				slide: 'sun',
+				top: 0,
+				left: 0,
+				width: 640,
+				height: 480,
+				rotate: 38
+			});
+
+			sun.addCanvasFrame({
+				name: 'aimed_flare',
+				slide: 'flare',
+				top: 0,
+				left: 0,
+				rotate: 38
+			});
+			sun.addCanvasFrame({
+				name: 'sun_animation',
+				slide: 'sun'
+			});
+
+
+
+			// Define Canvas
+			earth.addCanvas({
+				name: 'earth_animation',
+				canvasSlides: [ 'sized_earth' ]
+			});
+			sun.addCanvas({
+				name: 'sun_animation',
+				canvasSlides: [ 'sized_sun' ]
+			});
+			sun.addCanvas({
+				name: 'solar_flare',
+				canvasSlides: [
+					'sun_animation',
+					'aimed_flare'
+				]
+			});
+			// sun.addCanvas({
+			// 	name: "sun_spot",
+			// 	canvasFrames: [ '', '' ]
+			// });
+
+			// Begin Playback
+			sun.play('earth_animation');
+			// earth.play('earth_animation');
+
+		});
+
+	</script>
+
+</body>
+</html>

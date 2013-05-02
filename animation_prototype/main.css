@@ -1,0 +1,123 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+		cursor: url('images/cursor.png'), auto;
+}
+body {
+	height: 100%;
+	background: #000 url('images/background.jpg');
+	color: #fff;
+	margin: 20px auto;
+	font-family: verdana, helvetica, arial;
+}
+
+img {
+	display: block;
+	height: 100%;
+	width: auto;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+/* Canvas Styles */
+canvas.same {
+	width: 48%;
+	height: auto;
+}
+
+canvas.diff {
+	display: block;
+	height: 95%;
+	width: auto;
+	margin: 20px auto;
+}
+
+
+/* Slideshow Message Objects */
+.ssMessage {
+	position: absolute;
+	text-align: center;
+	width: 600px;
+	height: 20px;
+	left: 50%;
+	top: 10px;
+	margin-left: -300px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+	opacity: 0.45;
+}
+.ssProgress {
+	position: absolute;
+	text-align: center;
+	width: 600px;
+	height: 20px;
+	left: 50%;
+	top: 50%;
+	margin-left: -300px;
+	margin-top: -10px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+	opacity: 0.85;
+}
+.progress {
+	border-radius: 8px;
+	background: #89E7BB;
+	background-opacity: .5;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	height: 100%;
+}
+.ssBottom {
+	position: absolute;
+	text-align: center;
+	width: 600px;
+	height: 20px;
+	left: 50%;
+	margin-left: -300px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+	opacity: 0.95;
+}
+/*
+.slideMessage {
+	position: absolute;
+	text-align: center;
+	width: 600px;
+	height: 20px;
+	left: 50%;
+	top: 50%;
+	margin-left: -300px;
+	margin-top: -10px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+}
+
+.progress {
+	border-radius: 8px;
+	background: #89E7BB;
+	background-opacity: .5;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	height: 100%;
+}
+*/
