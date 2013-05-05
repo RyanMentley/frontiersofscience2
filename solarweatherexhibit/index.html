@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+<head>
+
+	<title>SlideShow</title>
+	<link rel='stylesheet' type='text/css' href='css/main.css' />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src='js/jquery_animator.js' type='text/javascript'></script>
+	<script src='js/captioner.js' type='text/javascript'></script>
+
+</head>
+<body oncontextmenu="return false;">
+
+	<img id='sun' class='same' />
+	<img id='earth' class='same' />
+
+	<script type='text/javascript'>
+		$(document).on("ready", function() {
+
+
+			// System Storage Container
+			var ns = {};
+
+
+			// Grab our components
+			ns.sun = $('#sun').slideShow({ trans: 0, delay: 120 });
+			ns.earth = $('#earth').slideShow({ trans: 0, delay: 120 });
+
+
+			// Preload all Images
+			ns.sun.addSlides({
+				name: 'sun',
+				images: [
+					{
+						range: {
+							start: 1,
+							end: 360,
+							type: '.png',
+							prefix: 'images/sun/'
+						},
+						delay: 120
+					}
+				]
+			});
+			ns.sun.addSlides({
+				name: 'spot',
+				images: [
+					{
+						range: {
+							start: 1,
+							end: 90,
+							type: '.png',
+							prefix: 'images/spot/'
+						},
+						delay: 120
+					}
+				]
+			});
+			ns.sun.addSlides({
+				name: 'flare',
+				images: [
+					{
+						range: {
+							start: 1,
+							end: 20,
+							type: '.png',
+							prefix: 'images/flare/'
+						},
+						delay: 120
+					}
+				]
+			});
+			ns.sun.addSlides({
+				name: 'cme',
+				images: [
+					{
+						range: {
+							start: 1,
+							end: 20,
+							type: '.png',
+							prefix: 'images/cme/'
+						},
+						delay: 120
+					}
+				]
+			});
+			ns.earth.addSlides({
+				name: 'earth',
+				images: [
+					{
+						range: {
+							start: 1,
+							end: 180,
+							type: '.png',
+							prefix: 'images/earth/'
+						},
+						delay: 60
+					}
+				]
+			});
+			ns.earth.addSlides({
+				name: 'aurora',
+				images: [
+					{
+						range: {
+							start: 1,
+							end: 60,
+							type: '.png',
+							prefix: 'images/aurora/'
+						},
+						delay: 60
+					}
+				]
+			});
+
+
+			// Create Audio Tags & Caption Systems
+			ns.createAudioSystem = function() {
+
+				// Generate Tags
+				ns.audio = {
+					sir: $('<audio>').append($('<source>').attr('src', 'audio/sir.mp3')).append($('<source>').attr('src', 'audio/sir.ogg')),
+					intro: $('<audio>').append($('<source>').attr('src', 'audio/intro.mp3')).append($('<source>').attr('src', 'audio/intro.ogg')),
+					spot: $('<audio>').append($('<source>').attr('src', 'audio/spot.mp3')).append($('<source>').attr('src', 'audio/spot.ogg')),
+					flare: $('<audio>').append($('<source>').attr('src', 'audio/flare.mp3')).append($('<source>').attr('src', 'audio/flare.ogg')),
+					cme:$('<audio>').append($('<source>').attr('src', 'audio/cme.mp3')).append($('<source>').attr('src', 'audio/cme.ogg'))
+				}
+
+				// Apply Captioner Systems
+				new Captioner(
+					ns.audio.intro[0],
+					function(message) {
+						$.ssDisplayMessage({ 'message': message, 'keep': true, 'class': 'ssBottom', attach: ns.earth.parent() });
+						$('.ssInstructions').show();
+					},
+					function() {
+						$.ssDisplayMessage({ 'message': '', 'delay': 1, 'class': 'ssBottom', attach: ns.earth.parent() });
+						ns.weather.default();
+						$('.ssInstructions').hide();
+					},
+					[
+						[0, "When scientists describe space weather, they are primarily referring to the changing environmental conditions in near Earth space,"],
+						[8.665, "or the space from the Sun's atmosphere to the Earth's atmosphere."],
+						[12.330, "Some space weather events, like auroras and meteor showers, are visible from Earth to the naked eye,"],
+						[18.969, "while others, such as solar flares and coronal mass ejections, are observable only with specialized scientific instruments or satellites."],
+						[28.475, "Similar to meteorological changes on Earth, changes in space weather can happen in hours, days, months, or years."],
+						[37.205, "Not only responsible for warming the surface of our planet, the energy from the Sun drives changes in temperature and precipitation."],
+						[45.332, "Since the Sun's atmosphere extends past the Earth's, particles from the solar wind can flow along Earth's magnetic field,"],
+						[53.743, "leading to the formation of electric currents at the Earth's surface."],
+						[58.027, "The Earth is protected to some degree from the impacts of space weather by its magnetic field and atmosphere."],
+						[65.076, "However, energetic electron particles can penetrate these defenses and damage sensitive electronics when the geomagnetic shielding is weakened during space weather events."]
+					]
+				);
+				new Captioner(
+					ns.audio.spot[0],
+					function(message) {
+						$.ssDisplayMessage({ 'message': message, 'keep': true, 'class': 'ssBottom', attach: ns.earth.parent() });
+						$('.ssInstructions').show();
+					},
+					function() {
+						$.ssDisplayMessage({ 'message': '', 'delay': 1, 'class': 'ssBottom', attach: ns.earth.parent() });
+						ns.weather.default();
+						$('.ssInstructions').hide();
+					},
+					[
+						[0, "A sunspot is a solar phenomenon that manifests as dark spots on the sun."],
+						[5.396, "Sunspots are areas of intense magnetic activity, and form a slight depression on the surface of the sun."],
+						[12.242, "They are dark because their temperature is about 1800 degrees Celsius colder than the rest of the sun's surface."],
+						[20.087, "The number of sunspots forms a cycle about 11 years long."],
+						[24.109, "Depending on the size of the sunspots, they can actually be seen from Earth without a telescope."],
+						[30.055, "While sunspots do not have any direct impact on the earth,"],
+						[34, "they are useful in predicting when events that do impact the earth will occur."]
+					]
+				);
+				new Captioner(
+					ns.audio.flare[0],
+					function(message) {
+						$.ssDisplayMessage({ 'message': message, 'keep': true, 'class': 'ssBottom', attach: ns.earth.parent() });
+						$('.ssInstructions').show();
+					},
+					function() {
+						$.ssDisplayMessage({ 'message': '', 'delay': 1, 'class': 'ssBottom', attach: ns.earth.parent() });
+						ns.weather.default();
+						$('.ssInstructions').hide();
+					},
+					[
+						[0, "A solar flare is a sudden, rapid, and intense variation in brightness."],
+						[5.43, "Solar flares occur when magnetic energy that has built up in the solar atmosphere is suddenly released."],
+						[11.891, "The amount of energy released is the equivalent of millions of 100-megaton hydrogen bombs exploding at the same time!"],
+						[19.618, "One of the first documented disruptions of technology by solar flares was the 1859 Solar Superstorm."],
+						[27.184, "Auroras filled the sky as far south as the Caribbean, magnetic compasses went haywire, and telegraph systems failed."],
+						[35.362, "Dr. Art Poland, an astrophysicist, says both solar flares and coronal mass ejections are the result of magnetic activity on the sun,"],
+						[44.913, "but solar flares develop much more rapidly, with much more energy, than coronal mass ejections."]
+					]
+				);
+				new Captioner(
+					ns.audio.cme[0],
+					function(message) {
+						$.ssDisplayMessage({ 'message': message, 'keep': true, 'class': 'ssBottom', attach: ns.earth.parent() });
+						$('.ssInstructions').show();
+					},
+					function() {
+						$.ssDisplayMessage({ 'message': '', 'delay': 1, 'class': 'ssBottom', attach: ns.earth.parent() });
+						ns.weather.default();
+						$('.ssInstructions').hide();
+					},
+					[
+						[0, "The Coronal Mass Ejection, or CME, is one of the most intense solar events to take place."],
+						[6.893, "Assumed to be created by changes or disturbances in the coronal magnetic field,"],
+						[12.071, "the Sun will eject a plasma within a solar wind or magnetic cloud."],
+						[16.645, "It has been said that speeds of a CME have reached as high as 7.158 million miles per hour!"],
+						[23.665, "CMEs were a contributor to the Carrington Event in 1859 that destroyed recently implemented telegraph systems."],
+						[31.924, "A more recent CME was during the month of August 2012, which did in fact penetrate earth's magnetic environment,"],
+						[40.469, "causing auroras for up to 3 days, extending into September."],
+						[45.711, "It is said that multiple CMEs actually happen every day."]
+					]
+				);
+			};
+			ns.stopAudio = function() {
+				for (var x in ns.audio) {
+					if (!ns.audio[x][0].paused && ns.audio[x][0].currentTime) {
+						ns.audio[x][0].pause();
+						ns.audio[x][0].currentTime = 0;
+						$.ssDisplayMessage({ 'message': '', 'delay': 1, 'class': 'ssBottom' });
+					}
+				}
+			}
+
+
+			// Named Operations & Event Handlers
+			ns.weather = {
+				default: function() {
+					ns.sun.play('sun');
+					ns.earth.play('earth');
+					ns.tracking.playing = false;
+				},
+				spot: function() {
+					ns.stopAudio();
+					ns.audio.spot[0].play();
+					ns.sun.play('spot');
+				},
+				flare: function() {
+					ns.stopAudio();
+					ns.audio.flare[0].play();
+					ns.sun.play('flare');
+				},
+				cme: function() {
+					ns.stopAudio();
+					ns.audio.cme[0].play();
+					ns.sun.play('cme');
+					setTimeout(function() {
+						ns.earth.play('aurora');
+					}, 2800);
+				},
+				random: function() {
+					// Randomly trigger a weather event, no audio
+					rndWeather = Math.floor(Math.random() * 6);
+					if (rndWeather == 0) {
+						ns.sun.play('spot');
+						ns.sun.addToQueue('sun');
+					} else if (rndWeather == 1) {
+						ns.sun.play('flare');
+						ns.sun.addToQueue('sun');
+					} else if (rndWeather == 2) {
+						ns.sun.play('cme');
+						ns.sun.addToQueue('sun');
+					}
+
+					// Randomly playback intro or sir audio files
+					rndAudio = Math.floor(Math.random() * 4);
+					if (rndAudio == 1) {
+						ns.audio.sir[0].play();
+					} else if (rndAudio == 3) {
+						ns.audio.intro[0].play();
+					}
+
+				}
+			};
+
+
+			// Separate Earth to new Tab
+			ns.earth.on('click', function() {
+
+				// Unbind Click Event
+				ns.earth.unbind('click');
+
+				// Open a new window
+				var nw = window.open('./earth.html');
+
+				// Remove & Replace earth
+				$(nw).on('load', function() {
+
+					// Convert to jQuery Reference
+					ns.nw = $(this);
+
+					// Reference for removal
+					var other = $(this.document.getElementsByTagName('img'));
+
+					// Try replacing
+					other.replaceWith(ns.earth.remove());
+
+					// Change reference value to new thing
+					ns.earth.removeClass('same');
+					ns.earth.addClass('diff');
+
+					// Change sun class to diff
+					ns.sun.removeClass('same');
+					ns.sun.addClass('diff');
+
+				});
+
+			});
+
+
+			// Add Gesture Events
+			ns.resetGestures = function() {
+				// Reset tracking data
+				ns.tracking = {
+					x: 0,
+					y: 0,
+					posX: 0,
+					posY: 0,
+					negX: 0,
+					negY: 0,
+					totalX: 0,
+					totalY: 0,
+					playing: true
+				};
+			};
+			ns.gesture = function() {
+
+				// Movement > certain percent of image
+				if ((ns.tracking.totalY + ns.tracking.totalX) > (0.30 * (ns.sun[0].height + ns.sun[0].width))) {
+
+					if (Math.abs(Math.abs(ns.tracking.negX) - ns.tracking.posX) <= (.35 * ns.tracking.posX) && Math.abs(Math.abs(ns.tracking.negY) - ns.tracking.posY) <= (.35 * ns.tracking.posY)) {
+						console.log("Sunspot");
+						ns.weather.spot();
+					} else if ((ns.tracking.posX > (0.9 * Math.abs(ns.tracking.negX))) && (Math.abs(ns.tracking.negY) > (0.9 * ns.tracking.posY))) {
+						console.log("CME");
+						ns.weather.cme();
+					} else {
+						console.log("Flare");
+						ns.weather.flare();
+					}
+
+					// Reset Gesture
+					ns.resetGestures();
+				}
+
+			};
+			ns.withinSun = function(x, y) {
+
+				// Calculate Sun Position with %'s to handle scaling
+				var sun = {
+					top: Math.floor(ns.sun[0].offsetTop + (ns.sun[0].height * 0.37)),
+					left: Math.floor(ns.sun[0].offsetLeft + (ns.sun[0].width * 0.10)),
+					height: Math.floor(ns.sun[0].offsetTop + (ns.sun[0].height * 0.44) + (ns.sun[0].height * 0.40)),
+					width: Math.floor(ns.sun[0].offsetLeft + (ns.sun[0].width * 0.15) + (ns.sun[0].width * 0.32))
+				}
+
+				// Smaller box
+				// var sun = {
+				// 	top: Math.floor(ns.sun[0].offsetTop + (ns.sun[0].height * 0.44)),
+				// 	left: Math.floor(ns.sun[0].offsetLeft + (ns.sun[0].width * 0.15)),
+				// 	height: Math.floor(ns.sun[0].offsetTop + (ns.sun[0].height * 0.44) + (ns.sun[0].height * 0.37)),
+				// 	width: Math.floor(ns.sun[0].offsetLeft + (ns.sun[0].width * 0.15) + (ns.sun[0].width * 0.28))
+				// }
+
+				// Check if inside sun
+				if (x > sun.left && x < sun.width && y > sun.top && y < sun.height) return true;
+			};
+			ns.resetGestures();
+			$(document).on('mousemove', function(e) {
+
+				// Randomly trigger weather event if idle for 3-5 minutes
+				if (ns.idle) clearTimeout(ns.idle);
+				ns.idle = setTimeout(function() {
+					ns.weather.random();
+				}, (Math.floor(Math.random() * 300000) + 180000));
+
+				// Check Coordinates inside sun to begin event storage
+				if (!ns.tracking.playing && (ns.tracking.totalX > 0 || ns.withinSun(e.clientX, e.clientY))) {
+
+					// If x > 0 track difference in coordinates
+					if (ns.tracking.x > 0) {
+
+						// Get Difference in last coords
+						var diffX = e.clientX - ns.tracking.x;
+						var diffY = e.clientY - ns.tracking.y;
+
+						// Apply total to appropriate location
+						if (diffX > 0) {
+							ns.tracking.posX += diffX;
+						} else {
+							ns.tracking.negX += diffX;
+						}
+						if (diffY > 0) {
+							ns.tracking.posY += diffY;
+						} else {
+							ns.tracking.negY += diffY;
+						}
+
+						// Increase Total Movement
+						ns.tracking.totalX += Math.abs(diffX);
+						ns.tracking.totalY += Math.abs(diffY);
+
+					}
+
+					// Log new Coordinates for next run
+					ns.tracking.x = e.clientX;
+					ns.tracking.y = e.clientY;
+
+					// Execute check on possibly gesture triggers
+					ns.gesture();
+
+				}
+
+			});
+
+
+			// Prepare Audio & Begin Playback
+			ns.createAudioSystem();
+			ns.weather.default();
+			ns.tracking.playing = false;
+
+			// Prevent Right Clicking for exhibit
+			$(document).on('mousedown', function(e) {
+				if (e.button == 2) {
+
+					// Cancel Playback & Reset
+					ns.stopAudio();
+					ns.weather.default();
+					$.ssDisplayMessage({ 'message': '', 'delay': 1, 'class': 'ssBottom', attach: ns.earth.parent() });
+					$('.ssInstructions').hide();
+				}
+				if (e.button == 0) {
+
+					// Intro Script
+					ns.stopAudio();
+					ns.audio.intro[0].play();
+				}
+			});
+
+
+		});
+	</script>
+
+	<div class='ssInstructions'>
+		<p>Press the B Button to cancel the animation.</p>
+	</div>
+
+</body>
+</html>

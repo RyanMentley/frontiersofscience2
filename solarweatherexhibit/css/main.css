@@ -1,0 +1,112 @@
+
+/* Poor Mans CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+/* Default Styles */
+html {
+		cursor: url("../images/cursor.png"), auto;
+}
+body {
+	height: 100%;
+	background: #000 url('../images/background.jpg');
+	color: #fff;
+	margin: 0 auto;
+	font-family: verdana, helvetica, arial;
+	overflow: hidden;
+}
+img {
+	vertical-align: middle;
+}
+
+
+/* Image Tag Format */
+img.same {
+	width: 48%;
+	height: auto;
+}
+
+img.diff {
+	display: block;
+	height: 95%;
+	width: auto;
+	margin: 20px auto;
+}
+
+
+/* Message System Styles */
+.ssMessage {
+	position: absolute;
+	text-align: center;
+	width: 800px;
+	height: 20px;
+	left: 50%;
+	top: 10px;
+	margin-left: -400px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+	opacity: 0.45;
+}
+.ssProgress {
+	position: absolute;
+	text-align: center;
+	width: auto;
+	width: 800px;
+	height: 20px;
+	left: 50%;
+	top: 50%;
+	margin-left: -400px;
+	margin-top: -10px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+	opacity: 0.85;
+}
+.ssprogressBar {
+	border-radius: 8px;
+	background: #89E7BB;
+	background-opacity: .5;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	height: 100%;
+}
+.ssBottom {
+	position: absolute;
+	text-align: center;
+	width: 800px;
+	max-height: 15%;
+	left: 50%;
+	top: 85%;
+	margin-left: -400px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+	opacity: 0.95;
+}
+
+.ssInstructions {
+	display: none;
+	position: absolute;
+	text-align: center;
+	width: 500px;
+	top: 90%;
+	left: 20px;
+	border-radius: 8px;
+	padding: 8px;
+	color: #00f;
+	background: #fff;
+	z-index: 10;
+	opacity: 0.95;
+}
